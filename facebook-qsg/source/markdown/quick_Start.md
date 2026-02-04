@@ -25,7 +25,6 @@ Quick Start Guide
   - [Troubleshooting](#troubleshooting)
 
 
-
 ## Overview
 Facebook allows you to create posts to share updates with your friends, family, or followers. This quick start guide explains how to create posts from both the web browser and the mobile app.
  
@@ -39,7 +38,7 @@ This guide helps you perform the following actions:
 
 This image shows how the post creation flow works.
 
-![Image](/assets/Facebook.png)
+![Image](../../assets/FacebookImage.png))
 
 **Target audience**
 
