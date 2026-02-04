@@ -1,5 +1,27 @@
 #  How to Create a Post on Facebook
 Quick Start Guide 
+- [How to Create a Post on Facebook](#how-to-create-a-post-on-facebook)
+  - [Overview](#overview)
+  - [Before You Get Started](#before-you-get-started)
+  - [Creating a Post from Web Browser](#creating-a-post-from-web-browser)
+    - [Create a Text-only Post](#create-a-text-only-post)
+    - [Share an Image](#share-an-image)
+    - [Share a Video](#share-a-video)
+    - [Share a GIF](#share-a-gif)
+    - [Share a Location](#share-a-location)
+    - [Share a Life Event](#share-a-life-event)
+    - [Share a Feeling or Activity](#share-a-feeling-or-activity)
+  - [Creating a Post from Mobile App](#creating-a-post-from-mobile-app)
+    - [Create a Text-only Post](#create-a-text-only-post-1)
+    - [Share an Image](#share-an-image-1)
+    - [Share a Video](#share-a-video-1)
+    - [Share Music](#share-music)
+    - [Share a Location](#share-a-location-1)
+    - [Share a GIF](#share-a-gif-1)
+    - [Share a Life Event](#share-a-life-event-1)
+    - [Share a Feeling or Activity](#share-a-feeling-or-activity-1)
+  - [Tag Friends](#tag-friends)
+  - [Troubleshooting](#troubleshooting)
 
 ## Overview
 Facebook allows you to create posts to share updates with your friends, family, or followers. This quick start guide explains how to create posts from both the web browser and the mobile app.
