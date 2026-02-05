@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultTarget
+  Version="2"
+  Comment="MadCap HTML5 Target"
+  Type="WebHelp2"
+  Destinations=""
+  GlossaryTermConversion="marked"
+  MasterPage="/Content/Resources/TemplatePages/Other-Topics.flmsp"
+  DefaultUrl="/Content/Home.htm"
+  ConditionTagExpression="include[Default.ScreenOnly or Default.Web], exclude[Default.PrintOnly]"
+  ShowMadCapBacklink="true"
+  MasterToc="/Project/TOCs/Online.fltoc"
+  ResolveCssVariables="true">
+  <PrintedOutput
+    CollapseMargins="true"
+    GenerateTOCProxy="true"
+    GenerateIndexProxy="true"
+    GenerateGlossaryProxy="true" />
+  <Glossaries>
+    <Glossary
+      Link="/Project/Glossaries/Glossary.flglo" />
+  </Glossaries>
+</CatapultTarget>

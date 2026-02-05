@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultTargetOutput
+  GeneratedTarget="/Output/Sudhakar/GettingStartedAWS_PDF/GettingStartedAWS_PDF.pdf"
+  BuildVersion="21.1.9396.41248">
+  <Files>
+    <Url
+      Source="Output/Sudhakar/Temporary/GettingStartedAWS_PDF/GettingStartedAWS_PDF_6210A79C/Resources/Images/amazon imager.jpg" />
+    <Url
+      Source="Output/Sudhakar/Temporary/GettingStartedAWS_PDF/GettingStartedAWS_PDF_6210A79C/Resources/Branding/Branding.css" />
+    <Url
+      Source="Output/Sudhakar/Temporary/GettingStartedAWS_PDF/GettingStartedAWS_PDF_6210A79C/Resources/Images/Hero-Image.png" />
+    <Url
+      Source="Output/Sudhakar/Temporary/GettingStartedAWS_PDF/GettingStartedAWS_PDF_6210A79C/Resources/Images/Minus.png" />
+    <Url
+      Source="Output/Sudhakar/GettingStartedAWS_PDF/GettingStartedAWS_PDF.pdf" />
+    <Url
+      Source="Output/Sudhakar/Temporary/GettingStartedAWS_PDF/GettingStartedAWS_PDF_6210A79C/Resources/Images/Logo.svg" />
+    <Url
+      Source="Output/Sudhakar/Temporary/GettingStartedAWS_PDF/GettingStartedAWS_PDF_6210A79C/Resources/Images/AWS logo.png" />
+    <Url
+      Source="Output/Sudhakar/Temporary/GettingStartedAWS_PDF/GettingStartedAWS_PDF_6210A79C/Resources/Images/Plus.png" />
+    <Url
+      Source="Output/Sudhakar/Temporary/GettingStartedAWS_PDF/GettingStartedAWS_PDF_6210A79C/Resources/Images/Logo.png" />
+  </Files>
+  <Skins />
+</CatapultTargetOutput>

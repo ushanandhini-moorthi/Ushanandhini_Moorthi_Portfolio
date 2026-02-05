@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+    </head>
+    <body>
+        <h2>Configure AWS CLI</h2>
+        <p>AWS CLI is a unified command-line tool that allows you to administer AWS services. With a single interface, you can configure, monitor, and automate multiple AWS services using commands and scripts.</p>
+        <p><b>Prerequisites</b>
+        </p>
+        <ul>
+            <li>
+                <p>AWS CLI is installed on your machine.</p>
+            </li>
+        </ul>
+        <p style="text-indent: 0.5in;">Note: See the <a href="http://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions">installation guide</a> if needed.</p>
+        <ul>
+            <li>
+                <p>IAM user credentials with permissions to use the CLI.</p>
+            </li>
+        </ul>
+        <p>To configure,</p>
+        <ol>
+            <li>
+                <p>On your browser, open the <a href="https://console.aws.amazon.com/singlesignon/">IAM Identity Center console</a>.</p>
+            </li>
+            <li>
+                <p>On the navigation pane, select <b>Users</b>.</p>
+            </li>
+            <li>
+                <p>Select the <b>username</b> of the user you want to enable CLI access for.</p>
+            </li>
+            <li>
+                <p>Select <b>Create Access keys</b>.</p>
+            </li>
+            <li>
+                <p>On the Retrieve access key page, copy the <b>Access Key ID</b> and <b>Secret Access Key</b>.</p>
+            </li>
+            <li>
+                <p>On your device’s terminal, run the following command:</p>
+                <p><code>aws configure</code>
+                </p>
+            </li>
+            <li>
+                <p>When prompted, enter the following:</p>
+                <ul>
+                    <li>
+                        <p><b>AWS Access Key ID:</b> Paste the copied access key ID.</p>
+                    </li>
+                    <li>
+                        <p><b>AWS Secret Access Key:</b> Paste the copied secret access key.</p>
+                    </li>
+                    <li>
+                        <p><b>Default region name:</b> Enter your preferred AWS region.</p>
+                    </li>
+                    <li>
+                        <p><b>Default output format:</b> Enter your preferred format.</p>
+                    </li>
+                </ul>
+                <p>Your AWS CLI is now configured.</p>
+            </li>
+        </ol>
+        <p>(Optional) To verify the setup, run the following command:</p>
+        <p><code>aws s3 ls</code>
+        </p>
+        <p>This command lists all storage containers (S3) buckets in your account, confirming that your CLI setup is successful.</p>
+    </body>
+</html>

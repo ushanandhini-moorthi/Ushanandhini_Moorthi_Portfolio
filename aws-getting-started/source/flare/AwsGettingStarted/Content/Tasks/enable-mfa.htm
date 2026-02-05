@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+    </head>
+    <body>
+        <h2>Enable MFA</h2>
+        <p>Multi-Factor Authentication (MFA) adds an extra layer of security by requiring a second verification factor in addition to the password. This reduces the risk of unauthorized access to your AWS account.</p>
+        <p>AWS supports two main types of MFA devices:</p>
+        <ul>
+            <li>
+                <p><b>Virtual MFA Devices:</b> Authentication apps such as Google Authenticator, Authy, or Microsoft Authenticator.</p>
+            </li>
+            <li>
+                <p><b>Hardware MFA Devices:</b> Physical devices such as YubiKey or other FIDO tokens.</p>
+            </li>
+        </ul>
+        <p><b>Prerequisites</b>
+        </p>
+        <ul>
+            <li>
+                <p>Root or IAM user credentials.</p>
+            </li>
+            <li>
+                <p>MFA app or hardware device.</p>
+            </li>
+        </ul>
+        <p>To enable,</p>
+        <ol>
+            <li>
+                <p>On your browser, sign in to the <a href="https://console.aws.amazon.com/">AWS Management Console</a>.</p>
+                <ul>
+                    <li>
+                        <p>For the root user, use your root email and password.</p>
+                    </li>
+                    <li>
+                        <p>For an IAM user, use your IAM username and password.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p>Perform one of the following tasks based on the user type:</p>
+                <ul>
+                    <li>
+                        <p>For a root user,</p>
+                        <ol>
+                            <li>
+                                <p>On the AWS management console page, select your account name.</p>
+                            </li>
+                            <li>
+                                <p>Select <b>My Security Credentials</b>.</p>
+                            </li>
+                            <li>
+                                <p>On the security Credentials page, select <b>Multi-factor authentication</b>.</p>
+                                <p>Select <b>Activate MFA</b>.</p>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p>For an IAM user,</p>
+                        <ol>
+                            <li>
+                                <p>On the management console page, open the IAM console.</p>
+                            </li>
+                            <li>
+                                <p>Select <b>Users</b>.</p>
+                            </li>
+                            <li>
+                                <p>Select the username.</p>
+                            </li>
+                            <li>
+                                <p>Go to <b>Security credentials tab</b>.</p>
+                            </li>
+                            <li>
+                                <p>Select <b>Assign MFA device</b>.</p>
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p>On the Select MFA device page, select your device type:</p>
+                <ul>
+                    <li>
+                        <p>For a virtual MFA device,</p>
+                        <ol>
+                            <li>
+                                <p>Open your MFA app.</p>
+                            </li>
+                            <li>
+                                <p>Scan the QR code or enter the secret key provided.</p>
+                            </li>
+                            <li>
+                                <p>Enter two consecutive one-time passwords in the <b>MFA Code 1</b> and <b>MFA Code 2</b> boxes.</p>
+                            </li>
+                            <li>
+                                <p>Select <b>Assign MFA</b>.</p>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p>For a hardware MFA device, refer to the video: <a href="https://www.youtube.com/watch?v=YjcP_QdbgIQ&amp;t=222s">AWS MFA using Hardware device</a></p>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <p>MFA is now enabled for the selected user. You have to provide both the password and the MFA code during future sign-ins.</p>
+    </body>
+</html>

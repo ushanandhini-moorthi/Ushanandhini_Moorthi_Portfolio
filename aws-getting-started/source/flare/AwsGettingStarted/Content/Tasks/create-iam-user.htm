@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+    </head>
+    <body>
+        <h2>Create IAM User</h2>
+        <p>An IAM user lets you access AWS securely without using the root account. You receive your own login credentials and permissions.</p>
+        <p><b>Prerequisites</b>
+        </p>
+        <ul>
+            <li>
+                <p>AWS root account activated.</p>
+            </li>
+            <li>
+                <p>User name for an IAM user.</p>
+            </li>
+        </ul>
+        <p>To create,</p>
+        <ol>
+            <li>
+                <p>On your browser, open the <a href="https://console.aws.amazon.com/singlesignon/">IAM Identity Center console</a>.</p>
+            </li>
+            <li>
+                <p>On the navigation pane, select <b>Users</b>.</p>
+            </li>
+            <li>
+                <p>Select <b>Create user</b>.</p>
+            </li>
+            <li>
+                <p>On the Specify user details page, enter the following information:</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>
+                        <p>Enter a <b>username</b> for the IAM user.</p>
+                    </li>
+                    <li>
+                        <p>On the Select AWS access type section, select one or both:</p>
+                        <ul>
+                            <li>
+                                <p><b>Management Console access:</b> Grants access to the AWS Management Console.</p>
+                            </li>
+                            <li>
+                                <p><b>Programmatic access</b>: Grants access through AWS API, CLI, SDKs, and other development tools.</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>To set up a password, select any one of the following options:</p>
+                        <ul>
+                            <li>
+                                <p><b>Auto generated password:</b> AWS generates a password.</p>
+                            </li>
+                            <li>
+                                <p><b>Custom password:</b> You create a password manually.</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>(Optional) Select <b>Users must create a new password at the next sign-in check box</b> if you want the created user to reset their password.</p>
+                    </li>
+                    <li>
+                        <p>Select <b>Next</b>.</p>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p>On the Set permissions page, select  one of the following option to assign permissions and select <b>Next</b>:</p>
+                <ul>
+                    <li>
+                        <p><b>Add the user to a group:</b> To add the user to an existing group or create a new one.</p>
+                    </li>
+                    <li>
+                        <p><b>Attach policies directly:</b> Attach a managed policy directly to the user.</p>
+                    </li>
+                    <li>
+                        <p><b>Copy permissions:</b> Copy permissions from an existing user.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <p>On the Review page, verify the details.</p>
+            </li>
+            <li>
+                <p>Select <b>Create user.</b></p>
+            </li>
+        </ol>
+        <p>The IAM user is created. If console access is enabled, AWS provides a <b>sign-in link</b> along with the credentials that you can use to log in.</p>
+    </body>
+</html>
