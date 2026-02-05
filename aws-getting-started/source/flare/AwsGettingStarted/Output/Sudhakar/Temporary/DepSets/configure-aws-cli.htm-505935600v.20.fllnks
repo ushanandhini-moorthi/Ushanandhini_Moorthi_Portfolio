@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultFileLinkSet
+  FileSearchable="true"
+  OnlyLocalStylesheets="false"
+  FileTimeEstimate="0"
+  FilePriority="0">
+  <Links>
+    <Link
+      Url="http://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" />
+    <Link
+      Url="https://console.aws.amazon.com/singlesignon/" />
+  </Links>
+  <LongLinks>
+    <Link
+      Url="http://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions" />
+    <Link
+      Url="https://console.aws.amazon.com/singlesignon/" />
+  </LongLinks>
+  <Anchors />
+  <Keywords />
+  <Concepts />
+  <ConceptControlNames />
+  <IndexControlNames />
+  <Variables />
+  <FileConditions />
+  <FileTags />
+  <AllConditions />
+  <Stylesheets />
+</CatapultFileLinkSet>

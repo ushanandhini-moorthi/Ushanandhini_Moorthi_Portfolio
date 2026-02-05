@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultToc Version="1" DescendantCount="11">
+    <TocEntry Title="Overview" Link="/Content/Introduction/aws-overview.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" ComputedResetPageLayout="true" ComputedFirstTopic="true" DescendantCount="2">
+        <TocEntry Title="Target audience" Link="/Content/Introduction/target-audience.htm" ComputedFirstTopic="false" DescendantCount="0" />
+        <TocEntry Title="AWS High-Level Architecture" Link="/Content/Concepts/aws-architecture.htm" ComputedFirstTopic="false" DescendantCount="0" />
+    </TocEntry>
+    <TocEntry Title="Before getting started" Link="/Content/Introduction/before-you-start.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" ComputedFirstTopic="false" DescendantCount="0" />
+    <TocEntry Title="Getting started" Link="/Content/Introduction/getting-started-overview.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" ComputedFirstTopic="false" DescendantCount="4">
+        <TocEntry Title="Create AWS account" Link="/Content/Tasks/create-aws-account.htm" ComputedFirstTopic="false" DescendantCount="0" />
+        <TocEntry Title="Create IAM User" Link="/Content/Tasks/create-iam-user.htm" ComputedFirstTopic="false" DescendantCount="0" />
+        <TocEntry Title="Enable MFA" Link="/Content/Tasks/enable-mfa.htm" ComputedFirstTopic="false" DescendantCount="0" />
+        <TocEntry Title="Configure AWS CLI" Link="/Content/Tasks/configure-aws-cli.htm" ComputedFirstTopic="false" DescendantCount="0" />
+    </TocEntry>
+    <TocEntry Title="FAQs" Link="/Content/Reference/FAQs.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" ComputedFirstTopic="false" DescendantCount="0" />
+    <TocEntry Title="What's Next" Link="/Content/Reference/whats-next.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" ComputedFirstTopic="false" DescendantCount="0" />
+</CatapultToc>
