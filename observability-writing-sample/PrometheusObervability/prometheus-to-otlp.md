@@ -28,7 +28,7 @@ We majorly have 3 steps to achive this.
 4. Define the metrics pipeline.
 5. Run and validate the setup.
 
-**Configure Prometheus Receiver**
+**1. Configure Prometheus Receiver**
 The Prometheus receiver in the OpenTelemetry Collector is responsible for scraping metrics from your application's `/metrics` endpoint.
 ```
 receivers:
@@ -42,7 +42,7 @@ receivers:
 ```
 Metrics are scraped at the defined interval and ingested into the Collector.
 
-**Transform Histograms**
+**2. Transform Histograms**
 Prometheus histograms need normalization into OTLP format. The Collector handles this automatically, but processors can refine behavior.
 processors:
 ```
@@ -54,7 +54,7 @@ processors:
 ```
 Histogram buckets are converted into delta values, improving backend compatibility.
 
-**Configure OTLP Exporter**
+**3. Configure OTLP Exporter**
 The OTLP exporter sends metrics to your backend.
 ```
 exporters:
@@ -64,7 +64,7 @@ exporters:
 ```
 Metrics flow seamlessly into the OTLP backend.
 
-**Define the Metrics Pipeline**
+**4. Define the Metrics Pipeline**
 Tie receivers, processors, and exporters together.
 ```
 service:
@@ -76,7 +76,7 @@ service:
 ```
 A complete telemetry flow is established: scrape, transform, and export.
 
-**Run and Validate**
+**5. Run and Validate**
 - Start the Collector: `otelcol --config config.yaml`
 - Check logs for successful scrape and export messages
 - Verify metrics in your backend dashboard

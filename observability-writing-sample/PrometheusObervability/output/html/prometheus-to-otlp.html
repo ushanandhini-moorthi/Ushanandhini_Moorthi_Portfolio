@@ -215,9 +215,10 @@ We majorly have 3 steps to achive this.</p>
 <li>Define the metrics pipeline.</li>
 <li>Run and validate the setup.</li>
 </ol>
-<p><strong>Configure Prometheus Receiver</strong><br />
+<p><strong>1. Configure Prometheus Receiver</strong><br />
 The Prometheus receiver in the OpenTelemetry Collector is responsible
-for scraping metrics from your application's /metrics endpoint.</p>
+for scraping metrics from your application's <code>/metrics</code>
+endpoint.</p>
 <pre><code>receivers:
   prometheus:
     config:
@@ -228,7 +229,7 @@ for scraping metrics from your application's /metrics endpoint.</p>
             - targets: [&#39;localhost:8080&#39;]  # Replace with your app&#39;s metrics endpoint</code></pre>
 <p>Metrics are scraped at the defined interval and ingested into the
 Collector.</p>
-<p><strong>Transform Histograms</strong><br />
+<p><strong>2. Transform Histograms</strong><br />
 Prometheus histograms need normalization into OTLP format. The Collector
 handles this automatically, but processors can refine behavior.<br />
 processors:</p>
@@ -239,14 +240,14 @@ processors:</p>
         - http_request_duration_seconds  # Request latency histogram</code></pre>
 <p>Histogram buckets are converted into delta values, improving backend
 compatibility.</p>
-<p><strong>Configure OTLP Exporter</strong><br />
+<p><strong>3. Configure OTLP Exporter</strong><br />
 The OTLP exporter sends metrics to your backend.</p>
 <pre><code>exporters:
   otlp:                      
     endpoint: &quot;backend:4317&quot;    # Replace with your backend address
     protocol: grpc              # gRPC is the default protocol</code></pre>
 <p>Metrics flow seamlessly into the OTLP backend.</p>
-<p><strong>Define the Metrics Pipeline</strong><br />
+<p><strong>4. Define the Metrics Pipeline</strong><br />
 Tie receivers, processors, and exporters together.</p>
 <pre><code>service:
   pipelines:
@@ -256,7 +257,7 @@ Tie receivers, processors, and exporters together.</p>
       exporters: [otlp]</code></pre>
 <p>A complete telemetry flow is established: scrape, transform, and
 export.</p>
-<p><strong>Run and Validate</strong></p>
+<p><strong>5. Run and Validate</strong></p>
 <ul>
 <li>Start the Collector: <code>otelcol --config config.yaml</code></li>
 <li>Check logs for successful scrape and export messages</li>
@@ -281,11 +282,12 @@ OTLP endpoints are commonly protected by TLS and authentication headers.
 Ensure certificates are trusted and credentials are configured before
 enabling export. Network policies and firewalls must allow outbound
 connections from the Collector to the backend.</p>
-<p>By configuring the Prometheus receiver, adding optional processors,
-and defining an OTLP exporter pipeline, you ensure that
-Prometheus-native histograms are fully integrated into modern
-observability platforms. This workflow preserves critical distribution
-data, enabling accurate monitoring, alerting, and troubleshooting across
-distributed systems.</p>
+<p><strong>Conclusion</strong><br />
+By configuring the Prometheus receiver, adding optional processors, and
+defining an OTLP exporter pipeline, you ensure that Prometheus-native
+histograms are fully integrated into modern observability platforms.
+This workflow preserves critical distribution data, enabling accurate
+monitoring, alerting, and troubleshooting across distributed
+systems.</p>
 </body>
 </html>
