@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>prometheus-to-otlp</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1
+id="collecting-prometheus-histograms-and-exporting-to-otlp">Collecting
+Prometheus Histograms and Exporting to OTLP</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Modern distributed systems generate large volumes of telemetry to
+help engineers monitor performance, detect anomalies, and ensure
+reliability. A common pattern is to expose metrics in Prometheus format
+at a <code>/metrics</code> endpoint, including histograms that capture
+request latency and other timing distributions.</p>
+<p>Some observability backends, however, accept metrics only in OTLP
+(OpenTelemetry Protocol). In these cases, Prometheus-native histograms
+must be collected, converted, and exported through an intermediate
+component before ingestion.</p>
+<p><strong>Purpose of the guide</strong><br />
+This document explains how to:</p>
+<ul>
+<li>Scrape Prometheus-native histograms from <code>/metrics</code>.</li>
+<li>Transform them into OTLP format.</li>
+<li>Export them to an OTLP-compatible backend using the OpenTelemetry
+Collector.</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, ensure you have:</p>
+<ul>
+<li>A running application exposing metrics at
+<code>/metrics</code>.</li>
+<li>Prometheus-style histograms in those metrics.</li>
+<li>OpenTelemetry Collector installed.</li>
+<li>Access to an OTLP-compatible backend.</li>
+<li>Basic familiarity with YAML configuration.</li>
+</ul>
+<h2 id="collecting-and-transforming-prometheus-histograms">Collecting
+and Transforming Prometheus Histograms</h2>
+<p>This task explains how to collect Prometheus histograms and export
+them in OTLP format.<br />
+We majorly have 3 steps to achive this.</p>
+<ol type="1">
+<li>Configure Prometheus Receiver</li>
+<li>Transform Histograms</li>
+<li>Configure OTLP Exporter</li>
+<li>Define the metrics pipeline.</li>
+<li>Run and validate the setup.</li>
+</ol>
+<p><strong>Configure Prometheus Receiver</strong><br />
+The Prometheus receiver in the OpenTelemetry Collector is responsible
+for scraping metrics from your application's /metrics endpoint.</p>
+<pre><code>receivers:
+  prometheus:
+    config:
+      scrape_configs:
+        - job_name: &#39;my-app&#39;          # Label for this scrape job
+          scrape_interval: 15s        # How often to scrape
+          static_configs:
+            - targets: [&#39;localhost:8080&#39;]  # Replace with your app&#39;s metrics endpoint</code></pre>
+<p>Metrics are scraped at the defined interval and ingested into the
+Collector.</p>
+<p><strong>Transform Histograms</strong><br />
+Prometheus histograms need normalization into OTLP format. The Collector
+handles this automatically, but processors can refine behavior.<br />
+processors:</p>
+<pre><code>processors:
+  cumulativetodelta:                # Convert cumulative to delta
+    include:                        # Apply to selected metrics
+      metrics:                      # Metric list
+        - http_request_duration_seconds  # Request latency histogram</code></pre>
+<p>Histogram buckets are converted into delta values, improving backend
+compatibility.</p>
+<p><strong>Configure OTLP Exporter</strong><br />
+The OTLP exporter sends metrics to your backend.</p>
+<pre><code>exporters:
+  otlp:                      
+    endpoint: &quot;backend:4317&quot;    # Replace with your backend address
+    protocol: grpc              # gRPC is the default protocol</code></pre>
+<p>Metrics flow seamlessly into the OTLP backend.</p>
+<p><strong>Define the Metrics Pipeline</strong><br />
+Tie receivers, processors, and exporters together.</p>
+<pre><code>service:
+  pipelines:
+    metrics:
+      receivers: [prometheus]
+      processors: [cumulativetodelta]
+      exporters: [otlp]</code></pre>
+<p>A complete telemetry flow is established: scrape, transform, and
+export.</p>
+<p><strong>Run and Validate</strong></p>
+<ul>
+<li>Start the Collector: <code>otelcol --config config.yaml</code></li>
+<li>Check logs for successful scrape and export messages</li>
+<li>Verify metrics in your backend dashboard</li>
+</ul>
+<p>Prometheus histograms are available in OTLP format for monitoring,
+alerting, and troubleshooting.</p>
+<p><strong>Validation Strategy</strong><br />
+Each stage of the pipeline should be verified independently:</p>
+<ul>
+<li>The <code>/metrics</code> endpoint should return histogram data when
+queried directly.</li>
+<li>The Collector logs should show successful scrapes and exports.</li>
+<li>The backend should display latency distributions rather than only
+counters or gauges.</li>
+</ul>
+<p>Introducing a temporary debug or logging exporter during rollout can
+help confirm that metrics are converted as expected before sending
+traffic to production systems.</p>
+<p><strong>Security and Connectivity</strong><br />
+OTLP endpoints are commonly protected by TLS and authentication headers.
+Ensure certificates are trusted and credentials are configured before
+enabling export. Network policies and firewalls must allow outbound
+connections from the Collector to the backend.</p>
+<p>By configuring the Prometheus receiver, adding optional processors,
+and defining an OTLP exporter pipeline, you ensure that
+Prometheus-native histograms are fully integrated into modern
+observability platforms. This workflow preserves critical distribution
+data, enabling accurate monitoring, alerting, and troubleshooting across
+distributed systems.</p>
+</body>
+</html>
