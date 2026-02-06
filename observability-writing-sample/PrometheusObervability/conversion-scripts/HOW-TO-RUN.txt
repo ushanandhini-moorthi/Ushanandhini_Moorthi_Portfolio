@@ -1,0 +1,39 @@
+# Markdown to HTML and PDF Conversion Scripts
+
+This folder contains automation scripts to convert Markdown files to HTML and PDF formats with professional styling.
+
+## Quick Start
+
+### Method 1: Batch Script (Easiest)
+
+**Step 1:** Open Command Prompt (CMD)
+
+**Step 2:** Navigate to the conversion-scripts folder (inside `PrometheusObervability`)
+```batch
+cd "c:\Users\Sudhakar\Documents\Ushanandhini Moorthi\Portfolio\Ushanandhini_Moorthi_Portfolio\observability-writing-sample\PrometheusObervability\conversion-scripts"
+```
+
+**Step 3:** Run the conversion script
+```batch
+convert-markdown.bat "..\prometheus-to-otlp.md"
+```
+
+### Method 2: PowerShell Script
+
+**Step 1:** Open PowerShell (recommended) — run as Administrator only if you need to change execution policy.
+
+**Step 2:** Navigate to the conversion-scripts folder (inside `PrometheusObervability`)
+```powershell
+cd "c:\Users\Sudhakar\Documents\Ushanandhini Moorthi\Portfolio\Ushanandhini_Moorthi_Portfolio\observability-writing-sample\PrometheusObervability\conversion-scripts"
+```
+
+**Step 3:** (Optional) Allow script execution for the current user
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+**Step 4:** Run the conversion script
+```powershell
+.\convert-markdown.ps1 -InputFile "..\prometheus-to-otlp.md"
+```
+

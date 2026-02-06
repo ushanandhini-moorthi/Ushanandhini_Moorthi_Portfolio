@@ -29,7 +29,7 @@ We majorly have 3 steps to achive this.
 5. Run and validate the setup.
 
 **Configure Prometheus Receiver**
-The Prometheus receiver in the OpenTelemetry Collector is responsible for scraping metrics from your application's /metrics endpoint.
+The Prometheus receiver in the OpenTelemetry Collector is responsible for scraping metrics from your application's `/metrics` endpoint.
 ```
 receivers:
   prometheus:
@@ -94,4 +94,5 @@ Introducing a temporary debug or logging exporter during rollout can help confir
 **Security and Connectivity**
 OTLP endpoints are commonly protected by TLS and authentication headers. Ensure certificates are trusted and credentials are configured before enabling export. Network policies and firewalls must allow outbound connections from the Collector to the backend.
 
+**Conclusion**
 By configuring the Prometheus receiver, adding optional processors, and defining an OTLP exporter pipeline, you ensure that Prometheus-native histograms are fully integrated into modern observability platforms. This workflow preserves critical distribution data, enabling accurate monitoring, alerting, and troubleshooting across distributed systems.
