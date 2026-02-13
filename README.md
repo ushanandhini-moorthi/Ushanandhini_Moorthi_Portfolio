@@ -128,7 +128,7 @@ Clone this repo and open the HTML or PDF outputs to view the documentation sampl
 For questions, feedback, or collaboration:
 
 📧 *ushanandhini.moorthi@gmail.com*  
-🔗 *[LinkedIn](https://linkedin.com/in/ushanandhini-moorthi)*
+🔗 *[LinkedIn](https://linkedin.com/in/ushanandhini-moorthi/)*
 
 ---
 
